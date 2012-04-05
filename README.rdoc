@@ -4,7 +4,7 @@ Socialize Your Movie Experience
 
 SocialMovie is a sample Ruby on Rails application that uses Facebok Open Graph. 
 
-http://socialmovie.herokuapp.com/
+http://socialmovie.herokuapp.com
 
 == Action Type
 
