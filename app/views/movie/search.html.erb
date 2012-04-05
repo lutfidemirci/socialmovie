@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>Search Results <small>Search result for: <b class="query"><%= CGI::unescape(@query) %></b> - I found <b class="query"><%= pluralize(@result_count, 'result') %></b>.</small></h1>
+</div>
+
+
+<ul class="thumbnails" id="search-movie-list">
+	<% @movies.each do |movie| %>
+	  <li class="span3 search-movie">
+	    <div class="thumbnail">
+	      <a href="/movie/<%= movie["id"]%>"><img src='<%= movie["poster_path"].nil? ? "http://placehold.it/185x276" : TMDB_W185_IMAGE_URL + movie["poster_path"] %>' class="poster"></a>
+				<div class="caption">
+					<h5><%= truncate(movie["original_title"], :size => 20) %></h5>
+					<p>
+						<% if current_user %>
+							<a href="#" mid="<%= movie["id"]%>" class="watch-action btn-orangey btn-bold-text btn btn-small">List as Watched</a> <a href="#" mid="<%= movie["id"]%>" class="wantwatch-action btn-bluey btn-bold-text btn btn-small">Want to Watch</a>
+						<% else %>
+						  <a href="/auth/facebook" class="login-with-facebook btn-facebook btn btn-small btn-bold-text">Login with Facebook</a>
+						<% end %>
+					</p>
+				</div>
+	    </div>
+	  </li>
+  <% end %>
+</ul>
+
+<div class="pagination">
+  <ul>
+    <li><a href="/search?query=<%= @query %>&page=1">First</a></li>
+		<% @pages.each do |page| %>
+			<% if @current_page == page %>
+    		<li class="active"><a href="/search?query=<%= @query %>&page=<%= page %>"><%= page %></a></li>
+			<% else %>
+	    	<li><a href="/search?query=<%= @query %>&page=<%= page %>"><%= page %></a></li>
+  		<% end %>
+    <% end %>
+		<li><a href="/search?query=<%= @query %>&page=<%= @total_pages %>">Last</a></li>
+  </ul>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  user: 
+  movie: 
+  fbid: MyString
+
+two:
+  name: 
+  user: 
+  movie: 
+  fbid: MyString

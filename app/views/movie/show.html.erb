@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1 id="movie-title"><%= @movie.title %></h1>
+
+	<div class="row">
+	  <div class="span3"><%= image_tag @movie.poster %></div>
+	  <div class="span2">
+			<% if current_user %>
+				<p><a href="#" mid="<%= @movie.tmdb_id %>" class="watch-action btn-orangey btn-bold-text btn btn-small">List as Watched</a></p>
+				<p><a href="#" mid="<%= @movie.tmdb_id %>" class="wantwatch-action btn-bluey btn-bold-text btn btn-small">Want to Watch</a></p>
+			<% else %>
+			  <p><a href="/auth/facebook" class="btn-facebook btn btn-small btn-bold-text">Login with Facebook</a></p>
+			<% end %>
+	  	
+			<p><fb:like href="<%= DOMAIN_URL %>/movie/<%= @movie.tmdb_id %>" send="true" layout="button_count" width="140" show_faces="false"></fb:like></p>
+	  </div>
+	  <div class="span7">
+	  	<p><b>Title: </b><%= @movie.title %></p>
+	  	<p><b>Description: </b><%= @movie.description %></p>
+			<p class="facebook-comment"><fb:comments href="<%= DOMAIN_URL %>/movie/<%= @movie.tmdb_id %>" num_posts="5" width="540"></fb:comments></p>
+	  </div>
+	</div>
+	
+</div>

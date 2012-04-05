@@ -1,0 +1,30 @@
+#content { padding-top: 70px; }
+
+#welcome { margin-top: 50px; }
+#login-with-facebook-button { margin-top: 40px; }
+
+#nav-welcome { line-height: 38px; }
+#nav-welcome b { color: white; }
+
+#movie-search { margin-top: 50px; }
+#movie-search input#query {
+	height: 70px;
+	line-height: 70px;
+	width: 590px;
+	font-size: 40px;
+}
+
+.query { color: #333; }
+
+#search-movie-list img.poster { padding: 10px 0 0 13px; width: 185px; height: 276px; }
+#search-movie-list h5 { margin: 5px 0 10px; }
+#search-movie-list a.btn { margin: 2px 0; }
+#search-movie-list a.watch-action { margin-left: 40px; }
+#search-movie-list a.wantwatch-action { margin-left: 43px; }
+#search-movie-list a.login-with-facebook { margin-left: 30px; }
+
+div.pagination ul { margin-left: 350px }
+
+h1#movie-title { margin-bottom: 30px; }
+
+p.facebook-comment { margin-top: 50px }

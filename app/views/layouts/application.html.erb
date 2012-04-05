@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+  <title>SocialMovie - a social movie experience</title>
+	<meta property="fb:app_id" content="<%= FB_APP_ID %>">
+	<meta property="og:site_name" content="SocialMovie">
+	<meta property="og:url" content="<%= @og_url || DOMAIN_URL %>">
+	<meta property="og:title" content="<%= @og_title || 'SocialMovie' %>">
+	<meta property="og:description" content="<%= @og_description || 'a social movie experience' %>">
+	<meta property="og:image" content="<%= @og_image || 'http://2.bp.blogspot.com/_QQH104_LXh0/TR5f1hn7bcI/AAAAAAAAEdY/s9xLADmw6Ps/s1600/movie.jpg' %>">
+	<meta property="og:type" content="<%= @og_type || 'website' %>">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=<%= FB_APP_ID %>";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<%= link_to "SocialMovie", root_path, :class => "brand" %>
+				<div class="nav-collapse">
+					<%= form_tag("/search", :method => :get, :class => "navbar-search pull-left") do %>
+					  <%= search_field_tag "query", nil, :class => "search-query span5", :placeholder => "Search Movie Name" %>
+					<% end %>
+					<ul class="nav pull-right">
+						<li><a href="https://github.com/lutfidemirci/socialmovie" target="_blank">Fork Me on GitHub</a></li>
+						<% if current_user.nil? %>
+							<li><a href="/auth/facebook">Login with Facebook</a></li>
+						<% else %>
+							<li id="nav-welcome">Welcome <b><%= current_user.name %></b>,</li>
+							<li><a href="/signout">Signout</a></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="container">
+		<div class="row" id="content">
+		  <div class="span12">
+				<% if flash[:notice] %>
+				    <div class="alert alert-success">
+							<%= flash[:notice] %>
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
+						</div>
+						<script type="text/javascript" charset="utf-8">
+							$(".alert").alert()
+						</script>
+				<% end %>
+				<%= yield %>
+				<footer class="footer">
+					<p>Lütfi Demirci - SocialMovie © 2012</p>
+				</footer>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

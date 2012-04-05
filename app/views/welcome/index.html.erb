@@ -1,0 +1,18 @@
+<div class="hero-unit" id="welcome">
+	<% if current_user.nil? %>
+	  <h1>Welcome to SocialMovie!</h1>
+	  <p>You can share your watched movies, and socialize the movie experience!</p>
+	  <p id="login-with-facebook-button">
+	    <a class="btn btn-primary btn-xlarge btn-facebook" href="/auth/facebook">
+	      Login with Facebook!
+	    </a>
+	  </p>
+	<% else %>
+		<h1>Hi, <%= current_user.name %>!</h1>
+	  <p>Search movie to socialize movie experience.</p>
+		<%= form_tag("/search", :method => :get, :class => "well form-search", :id => "movie-search") do %>
+		  <%= search_field_tag "query", nil, :class => "input-xlarge search-query", :placeholder => "Search Movie Name" %>
+			<%= submit_tag "Search", :class => "btn btn-success btn-xlarge" %>
+		<% end %>
+  <% end %>
+</div>

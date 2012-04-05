@@ -1,0 +1,22 @@
+== Welcome to SocialMovie
+
+Socialize Your Movie Experience
+
+SocialMovie is a sample Ruby on Rails application that uses Facebok Open Graph. 
+
+== Action Type
+
+List as Watch
+Want to Watch
+
+== Object Type
+
+Movie
+
+== Configuration
+
+You must edit these files:
+
+/config/initializers/omniauth.rb
+/config/initializers/tmdb.rb
+/config/initializers/domain.rb
